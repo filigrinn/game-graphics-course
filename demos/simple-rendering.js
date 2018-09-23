@@ -166,7 +166,7 @@ let bgColor = vec4.fromValues(1.0, 0.2, 0.3, 1.0);
 let fgColor = vec4.fromValues(1.0, 0.9, 0.5, 1.0);
 
 
-app.clearColor(bgColor[0], bgColor[1], bgColor[2], bgColor[3])
+app.clearColor(bgColor[3], bgColor[1], bgColor[1], bgColor[1])
     // .depthTest();
     .cullBackfaces();
 
@@ -198,11 +198,11 @@ function draw() {
     let time = new Date().getTime() / 1000 - startTime;
 
     mat4.perspective(projMatrix, Math.PI / 4, app.width / app.height, 0.1, 100.0);
-    mat4.lookAt(viewMatrix, vec3.fromValues(3, 0, 2), vec3.fromValues(0, 0, 0), vec3.fromValues(0, 1, 0));
+    mat4.lookAt(viewMatrix, vec3.fromValues(4, 3, 1), vec3.fromValues(0, 0, 0), vec3.fromValues(0, 2, 0));
     mat4.multiply(viewProjMatrix, projMatrix, viewMatrix);
 
-    mat4.fromXRotation(rotateXMatrix, time * 0.1136);
-    mat4.fromYRotation(rotateYMatrix, time * 0.2235);
+    mat4.fromXRotation(rotateXMatrix, time * 40);
+    mat4.fromYRotation(rotateYMatrix, time * 0.110101);
     mat4.multiply(modelMatrix, rotateXMatrix, rotateYMatrix);
 
     mat4.multiply(modelViewMatrix, viewMatrix, modelMatrix);
